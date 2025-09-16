@@ -22,6 +22,7 @@ import Security from "./pages/Security";
 import Privacy from "./pages/Privacy";
 import ContactForm from "./pages/ContactForm";
 import FeedbackForm from "./pages/FeedbackForm";
+import EmailViewer from "./pages/EmailViewer";
 const queryClient = new QueryClient();
 const Layout = ({ children }: { children: React.ReactNode }) => (
   <SidebarProvider>
@@ -59,6 +60,7 @@ const App = () => (
           <Route path="/privacy" element={<Layout><Privacy /></Layout>} />
           <Route path="*" element={<NotFound />} />
           <Route path="/contact" element={<ContactForm />} />
+          <Route path="/emailviewer" element={<Layout><EmailViewer /></Layout>} />
 <Route path="/feedback" element={<FeedbackForm />} />
         </Routes>
       </ThemeProvider>

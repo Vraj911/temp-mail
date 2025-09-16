@@ -29,7 +29,7 @@ const navigationItems = [
   { title: "API", url: "/api", icon: Code },
   { title: "Stats", url: "/stats", icon: BarChart3 },
   { title: "User Settings", url: "/settings", icon: Settings },
-  { title: "Email Viewer", url: "/viewer", icon: Mail },
+  { title: "Email Viewer", url: "/emailviewer", icon: Mail },
 ];
 const supportItems = [
   { title: "Customization", url: "/customization", icon: Settings },
