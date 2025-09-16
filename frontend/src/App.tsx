@@ -6,7 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { ThemeProvider } from "./components/ThemeProvider";
-import Index from "./pages/Index";
+import Landing from "./pages/Landing";
+import Inbox from "./pages/Inbox";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import GenerateEmail from "./pages/GenerateEmail";
@@ -19,6 +20,8 @@ import Configurations from "./pages/Configuration";
 import Customization from "./pages/Customization";
 import Security from "./pages/Security";
 import Privacy from "./pages/Privacy";
+import ContactForm from "./pages/ContactForm";
+import FeedbackForm from "./pages/FeedbackForm";
 const queryClient = new QueryClient();
 const Layout = ({ children }: { children: React.ReactNode }) => (
   <SidebarProvider>
@@ -41,8 +44,9 @@ const App = () => (
       <BrowserRouter>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <Routes>
+          <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Layout><Index /></Layout>} />
+          <Route path="/inbox" element={<Layout><Inbox /></Layout>} />
           <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
           <Route path="/generate" element={<Layout><GenerateEmail /></Layout>} />
           <Route path="/api" element={<Layout><API /></Layout>} />
@@ -54,6 +58,8 @@ const App = () => (
           <Route path="/security" element={<Layout><Security /></Layout>} />
           <Route path="/privacy" element={<Layout><Privacy /></Layout>} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/contact" element={<ContactForm />} />
+<Route path="/feedback" element={<FeedbackForm />} />
         </Routes>
       </ThemeProvider>
       </BrowserRouter>

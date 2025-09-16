@@ -24,7 +24,7 @@ import {
 import { cn } from "@/lib/utils";
 const navigationItems = [
   { title: "Dashboard", url: "/dashboard", icon: BarChart3 },
-  { title: "Inbox", url: "/", icon: Inbox },
+  { title: "Inbox", url: "/inbox", icon: Inbox },
   { title: "Generate Email", url: "/generate", icon: Mail },
   { title: "API", url: "/api", icon: Code },
   { title: "Stats", url: "/stats", icon: BarChart3 },

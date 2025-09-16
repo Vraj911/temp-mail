@@ -20,7 +20,7 @@ const mockInboxEmails = [
   { from: "Jane Doe", subject: "Check your inbox", time: "5 min ago" },
   { from: "Alice Brown", subject: "Important update", time: "10 min ago" },
 ];
-const Index = () => {
+const Inbox = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto p-6 space-y-6">
@@ -85,4 +85,4 @@ const Index = () => {
     </div>
   );
 };
-export default Index;
+export default Inbox;
