@@ -1,45 +1,67 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* TempMail App Design System - Dark theme with blue accents */
-
 @layer base {
   :root {
-    /* Dark theme colors */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --primary-hover: 221.2 83.2% 48%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 20% 35%;
+    --accent: 221.2 83.2% 53.3%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 222.2 84% 4.9%;
+    --sidebar-primary: 221.2 83.2% 53.3%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 40% 96.1%;
+    --sidebar-accent-foreground: 222.2 84% 4.9%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-ring: 221.2 83.2% 53.3%;
+    --gradient-primary: linear-gradient(135deg, hsl(221.2 83.2% 53.3%), hsl(221.2 83.2% 63%));
+    --gradient-secondary: linear-gradient(135deg, hsl(210 40% 96.1%), hsl(214.3 31.8% 91.4%));
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -2px hsl(0 0% 0% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.1), 0 10px 10px -5px hsl(0 0% 0% / 0.04);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .dark {
     --background: 215 28% 17%;
     --foreground: 210 40% 98%;
-    
     --card: 217 33% 17%;
     --card-foreground: 210 40% 98%;
-    
     --popover: 217 33% 17%;
     --popover-foreground: 210 40% 98%;
-    
-    /* Blue primary colors */
     --primary: 217 91% 60%;
     --primary-foreground: 210 40% 98%;
     --primary-hover: 217 91% 55%;
-    
     --secondary: 217 33% 25%;
     --secondary-foreground: 210 40% 98%;
-    
     --muted: 217 33% 25%;
     --muted-foreground: 215 20% 65%;
-    
     --accent: 217 91% 60%;
     --accent-foreground: 210 40% 98%;
-    
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
-    
     --border: 217 33% 25%;
     --input: 217 33% 22%;
     --ring: 217 91% 60%;
-    
     --radius: 0.75rem;
-    
-    /* Sidebar colors */
     --sidebar-background: 215 28% 14%;
     --sidebar-foreground: 210 40% 98%;
     --sidebar-primary: 217 91% 60%;
@@ -48,28 +70,21 @@
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 217 33% 20%;
     --sidebar-ring: 217 91% 60%;
-    
-    /* Custom gradients */
     --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
     --gradient-secondary: linear-gradient(135deg, hsl(217 33% 20%), hsl(217 33% 25%));
-    
-    /* Shadows */
     --shadow-sm: 0 1px 2px 0 hsl(215 28% 8% / 0.05);
     --shadow-md: 0 4px 6px -1px hsl(215 28% 8% / 0.1), 0 2px 4px -1px hsl(215 28% 8% / 0.06);
     --shadow-lg: 0 10px 15px -3px hsl(215 28% 8% / 0.1), 0 4px 6px -2px hsl(215 28% 8% / 0.05);
     --shadow-xl: 0 20px 25px -5px hsl(215 28% 8% / 0.1), 0 10px 10px -5px hsl(215 28% 8% / 0.04);
-    
-    /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
-
 @layer utilities {
   .hover-scale {
     @apply transition-transform duration-200 hover:scale-105;
   }
-  
   .story-link {
     @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
   }
 }
+
