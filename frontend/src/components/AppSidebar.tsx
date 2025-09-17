@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Inbox,
   Code,
@@ -22,6 +23,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
+import Logo from "@/assets/logo.png"; 
 const navigationItems = [
   { title: "Dashboard", url: "/dashboard", icon: BarChart3 },
   { title: "Inbox", url: "/inbox", icon: Inbox },
@@ -38,6 +40,7 @@ const supportItems = [
   { title: "Configurations", url: "/configurations", icon: Settings },
 ];
 export function AppSidebar() {
+  const navigate = useNavigate();
   const { state } = useSidebar();
   const location = useLocation();
   const currentPath = location.pathname;
@@ -48,7 +51,7 @@ export function AppSidebar() {
       <div className="flex items-center justify-between p-4 border-b border-sidebar-border">
         {!collapsed && (
           <div className="flex items-center gap-2">
-            <Mail className="h-6 w-6 text-primary" />
+                <img src={Logo} alt="Logo" className="h-10 w-15 object-contain" />
             <span className="text-lg font-bold text-sidebar-foreground">RapidMail</span>
           </div>
         )}
@@ -125,7 +128,7 @@ export function AppSidebar() {
         </div>
         {!collapsed && (
           <div className="flex items-center gap-2 mt-3">
-            <button className="flex items-center gap-2 text-xs text-muted-foreground hover:text-sidebar-foreground transition-colors">
+            <button className="flex items-center gap-2 text-xs text-muted-foreground hover:text-sidebar-foreground transition-colors" onClick={() => navigate('/settings')}>
               <Settings className="h-3 w-3" />
               Settings
             </button>
