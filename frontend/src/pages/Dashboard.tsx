@@ -2,6 +2,8 @@ import { EmailCard } from "@/components/EmailCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import {
   Mail,
   Send,
@@ -26,16 +28,19 @@ const statsData = [
   { label: "Total emails sent this week", value: "16", icon: Send },
 ];
 export default function Dashboard() {
+  const navigate = useNavigate();
+   const location = useLocation();
+   const username = location.state?.username || "User";
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto p-6 space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">Welcome back, User!</h1>
+            <h1 className="text-2xl font-bold text-foreground">Welcome back, {username}!</h1>
             <p className="text-muted-foreground">Your temporary emails:</p>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-primary hover:bg-primary-hover text-primary-foreground">
+            <Button className="bg-primary hover:bg-primary-hover text-primary-foreground"  onClick={() => navigate("/generate")}>
               <Mail className="h-4 w-4 mr-2" />
               Start a new email
             </Button>

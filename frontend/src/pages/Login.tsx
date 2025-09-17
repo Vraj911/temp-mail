@@ -5,14 +5,21 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 export default function Login() {
   const [isLogin, setIsLogin] = useState(true);
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/");
+    if (isLogin) {
+      console.log("Logging in with", { email, password });
+    } else {
+      console.log("Signing up with", { username, email, password });
+    }
+    navigate("/",{state:{username:username || "User"}});
   };
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
@@ -36,8 +43,26 @@ export default function Login() {
           </CardHeader>
           <CardContent className="space-y-4">
             <form onSubmit={handleSubmit} className="space-y-4">
+              {!isLogin && (
+                <div className="space-y-2">
+                  <Label htmlFor="username" className="text-sm text-card-foreground">
+                    Username
+                  </Label>
+                  <Input
+                    id="username"
+                    type="text"
+                    placeholder="Choose a username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    className="bg-input border-border text-foreground"
+                    required
+                  />
+                </div>
+              )}
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-sm text-card-foreground">Email</Label>
+                <Label htmlFor="email" className="text-sm text-card-foreground">
+                  Email
+                </Label>
                 <Input
                   id="email"
                   type="email"
@@ -49,7 +74,9 @@ export default function Login() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-sm text-card-foreground">Password</Label>
+                <Label htmlFor="password" className="text-sm text-card-foreground">
+                  Password
+                </Label>
                 <Input
                   id="password"
                   type="password"
@@ -72,7 +99,9 @@ export default function Login() {
                 <div className="w-full border-t border-border" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
+                <span className="bg-card px-2 text-muted-foreground">
+                  Or continue with
+                </span>
               </div>
             </div>
             <div className="flex gap-3">
@@ -92,7 +121,9 @@ export default function Login() {
                 onClick={() => setIsLogin(!isLogin)}
                 className="text-sm text-primary hover:underline"
               >
-                {isLogin ? "Don't have an account? Sign up" : "Already have an account? Sign in"}
+                {isLogin
+                  ? "Don't have an account? Sign up"
+                  : "Already have an account? Sign in"}
               </button>
               {isLogin && (
                 <div>
