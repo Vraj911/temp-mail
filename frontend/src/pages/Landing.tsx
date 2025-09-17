@@ -11,7 +11,7 @@ export default function Landing() {
       <div className="px-6 py-16 text-center max-w-4xl mx-auto space-y-12">
         <div className="space-y-6">
           <Mail className="h-12 w-12 mx-auto text-primary" />
-          <h1 className="text-4xl md:text-5xl font-bold">Welcome to TempMailPro</h1>
+          <h1 className="text-4xl md:text-5xl font-bold">Welcome to RapidMail</h1>
           <p className="text-muted-foreground text-lg">
             Generate temporary emails instantly. Stay private, secure, and in control of your inbox.
           </p>

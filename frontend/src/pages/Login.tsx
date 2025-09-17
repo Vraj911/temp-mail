@@ -20,10 +20,10 @@ export default function Login() {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Mail className="h-8 w-8 text-primary" />
-            <h1 className="text-2xl font-bold text-foreground">TempMailPro</h1>
+            <h1 className="text-2xl font-bold text-foreground">RapidMail</h1>
           </div>
           <h2 className="text-lg text-muted-foreground">
-            Welcome to TempMailPro
+            Welcome to RapidMail
           </h2>
         </div>
         <Card className="bg-card border-border shadow-custom-lg">
