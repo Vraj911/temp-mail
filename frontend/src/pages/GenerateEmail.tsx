@@ -34,7 +34,7 @@ export default function GenerateEmail() {
   const handleGenerate = async () => {
   setGenerating(true);
   try {
-    const response = await axios.post(`${BACKEND_URL}/api/generate/emails`, {
+    const response = await axios.post(`${BACKEND_URL}/api/emails/create`, {
       prefix: customPrefix || undefined, 
       duration: parseInt(duration),      
       user_id: "64f9e6a1f8a4b2c3d4e5f678"            

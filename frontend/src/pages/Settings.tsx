@@ -38,7 +38,7 @@ export default function Settings() {
 
   const handleDeleteEmail = async (emailId: string) => {
     try {
-      await axios.get(`${BACKEND_URL}/api/settings/delete?id=${emailId}`);
+      await axios.get(`${BACKEND_URL}/api/emails/delete?id=${emailId}`);
       setEmails(prev => prev.filter(e => e._id !== emailId));
     } catch (error) {
       console.error("Failed to delete email:", error);

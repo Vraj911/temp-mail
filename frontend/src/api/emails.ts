@@ -10,6 +10,6 @@ export interface Email {
   created_at: string;
 }
 export const fetchEmails = async (): Promise<Email[]> => {
-  const response = await axios.get(`${BACKEND_URL}/api/dashboard/emails`);
+  const response = await axios.get(`${BACKEND_URL}/api/emails/fetch`);
   return response.data;
 };
