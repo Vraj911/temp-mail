@@ -2,8 +2,12 @@ import { EmailCard } from "@/components/EmailCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useNavigate } from "react-router-dom";
 import {useLocation} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import React from "react";
+import axios from "axios";
+import { fetchEmails, Email } from "@/api/emails";
+import { useEffect, useState } from "react";
 import {
   Mail,
   Send,
@@ -13,11 +17,6 @@ import {
   Forward,
   Sparkles
 } from "lucide-react";
-const mockEmails = [
-  { email: "temp123@mailpro.com", expiresIn: 10 },
-  { email: "temp456@mailpro.com", expiresIn: 15 },
-  { email: "temp789@mailpro.com", expiresIn: 20 },
-];
 const mockInboxEmails = [
   { from: "John Smith", subject: "Welcome to our service", time: "2 min ago" },
   { from: "Jane Doe", subject: "Check your inbox", time: "5 min ago" },
@@ -28,8 +27,22 @@ const statsData = [
   { label: "Total emails sent this week", value: "16", icon: Send },
 ];
 export default function Dashboard() {
-  const navigate = useNavigate();
-   const location = useLocation();
+const location = useLocation();
+const navigate = useNavigate();
+const [emails, setEmails] = useState<Email[]>([]);
+useEffect(() => {
+  const getEmails = async () => {
+    try {
+      const data = await fetchEmails();
+      setEmails(data);
+    } catch (err) {
+      console.error("Error fetching emails:", err);
+    }
+  };
+  getEmails();
+}, []);
+
+
    const username = location.state?.username || "User";
   return (
     <div className="min-h-screen bg-background">
@@ -50,11 +63,26 @@ export default function Dashboard() {
             </Button>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {mockEmails.map((email, index) => (
-            <EmailCard key={index} {...email} />
-          ))}
-        </div>
+       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  {emails.length > 0 ? (
+    emails.map((emailItem, index) => (
+      <EmailCard
+        key={index}
+        email={emailItem.address} 
+        expiresIn={
+          emailItem.expires_at
+            ? Math.ceil(
+                (new Date(emailItem.expires_at).getTime() - Date.now()) / (1000 * 60)
+              )
+            : 0
+        }
+      />
+    ))
+  ) : (
+    <p className="text-muted-foreground col-span-full text-center">No emails yet</p>
+  )}
+</div>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <Card className="bg-card border-border shadow-custom-md">
             <CardHeader>
